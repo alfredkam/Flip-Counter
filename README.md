@@ -5,7 +5,7 @@ FlipClock in HTML5
 
 Demo
 ====
-http://alfredkam.com/apps/flipCouter/
+http://alfredkam.com/apps/flipCounter/
 
 Usage
 ====
