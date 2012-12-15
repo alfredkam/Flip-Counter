@@ -20,5 +20,6 @@ initalize:
 	});
 
 to change the value:
+
 	flipClock.change(<value>);
 
