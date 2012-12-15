@@ -3,6 +3,10 @@ FlipClock
 
 FlipClock in HTML5
 
+Demo
+====
+http://alfredkam.com/apps/flipClock/
+
 Usage
 ====
 initalize:
