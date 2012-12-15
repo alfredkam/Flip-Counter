@@ -1,9 +1,25 @@
 <html>
 	<head>
 		<script src='flipclock.js' type='text/javascript'></script> 
+		<script>
+			window.onload = function() {
+				flipClock.init({
+					id : "flipClock-small",
+					type : "small",
+					digitLength : 8,
+				});	
+				flipClock.init({
+					id : "flipClock-default",
+				});
+				flipClock.demo();	
+			}
+		</script>
 	</head>
 	<body>
-		<div id='flipClock'></div>
+		Small<br>
+		<div id='flipClock-small'></div>
+		Default <br>
+		<div id='flipClock-default'></div>
 	</body>
 </html>
 
