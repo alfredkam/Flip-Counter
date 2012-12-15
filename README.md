@@ -5,15 +5,15 @@ FlipClock in HTML5
 
 Demo
 ====
-http://alfredkam.com/apps/flipClock/
+http://alfredkam.com/apps/flipCouter/
 
 Usage
 ====
 initalize:
-	flipClock.init();
+	flipCounter.init();
 
 	//options
-	flipClock.init({
+	flipCounter.init({
 		type : "default", //you are given small or default size
 		id : <element ID>, 
 		digitLength : <integer>, //display x length of grids, default at 5
@@ -21,5 +21,5 @@ initalize:
 
 to change the value:
 
-	flipClock.change(<value>);
+	flipCounter.change(<value>);
 

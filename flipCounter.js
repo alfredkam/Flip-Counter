@@ -311,6 +311,6 @@
 			["change",proto.change],
 			["demo",proto.demo]
 		];
-	exportSingleton("flipClock", g, attr);
+	exportSingleton("flipCounter", g, attr);
 
 })();
