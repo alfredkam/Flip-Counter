@@ -1,8 +1,8 @@
 (function(){
 
-	function g() {};
-	g.prototype.successfullInit = false;
-	g.prototype.settings = {
+	var counter = {
+		successfullInit : false,
+		settings : {
 			small : {
 				height : 25,
 				width : 45,
@@ -35,8 +35,8 @@
 				fontTopAxis : 73,
 				fontBottomAxis : 24,
 			},
-		};
-	g.prototype.init = function(json) {
+		},
+		init : function(json) {
 			var self = this;
 			var isJson = true;
 			self.type = "default";
@@ -95,34 +95,34 @@
 			self._top = document.getElementById(self.id+"-canvas-top").getContext('2d');
 			self._bottom = document.getElementById(self.id+"-canvas-bottom").getContext('2d');
 			self.draw(self._top, self._bottom);
-		};
-	g.prototype.draw = function(_top, _bottom) {
+		},
+		draw : function(_top, _bottom) {
 			var self = this;
 			self.setup(_top, _bottom);	
-		};
-	g.prototype.demo = function() {
+		},
+		demo : function() {
 			var self = this;
 			if(!self.successfullInit)
 				return;
 			for(var i=0;i<100;i++) {
 				self.change(i);
 			}
-		};
-	g.prototype.change = function(value) {
+		},
+		change : function(value) {
 			var self = this;
 			self.stack.push(value);	
 			if(self.stack.length-1 == 0)
 				self.listener();
-		};
-	g.prototype.listener = function () {
+		},
+		listener : function () {
 			var self = this;
 			window.setTimeout(function() {
 				self.feeder(self.stack.shift());
 				if(self.stack.length > 0)
 					self.listener();
 			},1000);
-		};
-	g.prototype.feeder = function(value) {
+		},
+		feeder : function(value) {
 			var self = this;
 			var _top = self._top;
 			var _bottom = self._bottom;
@@ -141,8 +141,8 @@
 					self.updatePosition(_top,_bottom, self.digitLength-1-j, 0);	
 			}
 	
-		};
-	g.prototype.setup = function(_top, _bottom) {
+		},
+		setup : function(_top, _bottom) {
 			var self = this;
 			var gap = self.gap;
 			for(var i=0;i<self.digitLength;i++) {
@@ -188,9 +188,9 @@
 				_bottom.fillText("0",i*gap+self.settings[self.type].fontCenter, self.settings[self.type].fontBottomAxis);
 				_bottom.closePath();
 			}
-		};
+		},
 		//updates the position
-	g.prototype.updatePosition = function(_top, _bottom, pos, digit) {
+		updatePosition : function(_top, _bottom, pos, digit) {
 			var self = this;
 			var gap = self.gap;
 			var prev = self.numList[pos];
@@ -292,25 +292,8 @@
 			}
 			animateTop(0);
 
-		};
-
-	var exportSingleton = function(name, obj, attr) {
-		if(!window[name]) {
-			var g = window[name] = new obj;
-			for(var i=0;i<attr.length;i++) {
-				try {
-				g[attr[i][0]] = attr[i][1];
-				} catch(err) {
-				}
-			}
-		}
+		},
 	}
-	var proto = g.prototype,
-		attr = [
-			["init",proto.init],
-			["change",proto.change],
-			["demo",proto.demo]
-		];
-	exportSingleton("flipCounter", g, attr);
 
+	window.flipCounter = counter;
 })();
